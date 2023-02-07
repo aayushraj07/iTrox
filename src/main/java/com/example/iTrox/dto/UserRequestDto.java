@@ -1,7 +1,6 @@
 package com.example.iTrox.dto;
 
 import com.example.iTrox.enums.Gender;
-import java.util.UUID;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,11 +8,10 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserResponseDto {
+public class UserRequestDto {
 
-  private UUID id;
-
+  private String userId;
   private String name;
-
+  private Long age;
   private Gender gender;
 }

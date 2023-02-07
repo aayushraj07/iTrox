@@ -1,13 +1,16 @@
 package com.example.iTrox.enums;
 
 public enum Gender {
-    MALE("MALE"),
-    FEMALE("FEMALE");
+  MALE("MALE"),
+  FEMALE("FEMALE");
 
-    private final String gender;
+  private final String gender;
 
-    Gender(String gender) {this.gender = gender;}
+  Gender(String gender) {
+    this.gender = gender;
+  }
 
-    public String getGender() { return gender;}
-
+  public String getGender() {
+    return gender;
+  }
 }
