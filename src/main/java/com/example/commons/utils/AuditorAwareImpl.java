@@ -1,13 +1,13 @@
-//package com.example.commons.utils;
+// package com.example.commons.utils;
 //
-//import java.util.Optional;
-//import org.springframework.data.domain.AuditorAware;
+// import java.util.Optional;
+// import org.springframework.data.domain.AuditorAware;
 //
-//public class AuditorAwareImpl implements AuditorAware<String> {
+// public class AuditorAwareImpl implements AuditorAware<String> {
 //
 //  @Override
 //  public Optional<String> getCurrentAuditor() {
 //
 //    return Optional.of("ByteProgramming");
 //  }
-//}
+// }

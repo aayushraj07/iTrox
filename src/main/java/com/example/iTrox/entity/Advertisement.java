@@ -1,8 +1,6 @@
 package com.example.iTrox.entity;
 
-import com.example.commons.dto.Auditable;
 import jakarta.persistence.*;
-
 import java.io.Serializable;
 import java.util.UUID;
 import lombok.*;
@@ -13,7 +11,7 @@ import org.hibernate.annotations.GenericGenerator;
 @Getter
 @Setter
 @NoArgsConstructor
-public class Advertisement extends AuditableBase {
+public class Advertisement extends AuditableBase implements Serializable {
 
   @Id
   @GeneratedValue(generator = "UUID")

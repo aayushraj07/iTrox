@@ -28,7 +28,6 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	implementation group: 'org.springframework', name: 'spring-web', version: '6.0.1'
 	implementation 'com.squareup.retrofit2:converter-jackson:2.9.0'
-	implementation group: 'javax.persistence', name: 'javax.persistence-api', version: '2.2'
 	// https://mvnrepository.com/artifact/io.swagger/swagger-annotations
 	implementation group: 'io.swagger', name: 'swagger-annotations', version: '1.5.0'
 
@@ -39,6 +38,11 @@ dependencies {
 	implementation group: 'org.springframework', name: 'spring-context', version: '6.0.4'
 	// Spotless
 	implementation group: 'com.diffplug.spotless', name: 'spotless-plugin-gradle', version: '5.14.2'
+
+	// https://mvnrepository.com/artifact/jakarta.persistence/jakarta.persistence-api
+	implementation group: 'jakarta.persistence', name: 'jakarta.persistence-api', version: '3.1.0'
+
+
 
 
 }

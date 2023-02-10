@@ -1,6 +1,5 @@
 package com.example.iTrox.entity;
 
-import com.example.commons.dto.Auditable;
 import com.example.iTrox.enums.Gender;
 import jakarta.persistence.*;
 import java.io.Serializable;
@@ -13,7 +12,7 @@ import org.hibernate.annotations.GenericGenerator;
 @NoArgsConstructor
 @Entity
 @Table(name = "users")
-public class User extends AuditableBase {
+public class User extends AuditableBase implements Serializable {
 
   @Id
   @GeneratedValue(generator = "UUID")
