@@ -20,5 +20,8 @@ public class AdvertisementController {
   }
 
   @PostMapping
-  public AdvertismentResponseDto create(@RequestBody AdvertismentRequestDto advertismentRequestDto) { return advertisementService.create(advertismentRequestDto);}
+  public AdvertismentResponseDto create(
+      @RequestBody AdvertismentRequestDto advertismentRequestDto) {
+    return advertisementService.create(advertismentRequestDto);
+  }
 }

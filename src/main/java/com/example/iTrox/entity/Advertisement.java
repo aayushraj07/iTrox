@@ -3,7 +3,6 @@ package com.example.iTrox.entity;
 import com.example.commons.dto.Auditable;
 import com.example.iTrox.enums.Type;
 import jakarta.persistence.*;
-import java.io.Serializable;
 import java.util.UUID;
 import lombok.*;
 import org.hibernate.annotations.GenericGenerator;

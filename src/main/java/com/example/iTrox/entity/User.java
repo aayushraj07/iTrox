@@ -3,7 +3,6 @@ package com.example.iTrox.entity;
 import com.example.commons.dto.Auditable;
 import com.example.iTrox.enums.Gender;
 import jakarta.persistence.*;
-import java.io.Serializable;
 import java.util.UUID;
 import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
@@ -36,7 +35,7 @@ public class User extends Auditable {
   private Boolean isOrganisation;
 
   @Column(name = "email")
-  private String  email;
+  private String email;
 
   @OneToOne private ActivityMapping activityMapping;
 }
