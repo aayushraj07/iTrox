@@ -23,6 +23,5 @@ public class AdvertisementController {
   public AdvertismentResponseDto create(
       @RequestBody AdvertismentRequestDto advertismentRequestDto) {
     return advertisementService.create(advertismentRequestDto);
-
   }
 }
