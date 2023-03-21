@@ -1,5 +1,6 @@
 package com.example.iTrox.entity;
 
+import com.example.commons.dto.Auditable;
 import jakarta.persistence.*;
 import java.io.Serializable;
 import java.util.UUID;
@@ -11,7 +12,7 @@ import org.hibernate.annotations.GenericGenerator;
 @Getter
 @Setter
 @NoArgsConstructor
-public class Category extends Schedule implements Serializable {
+public class Category extends Auditable {
   @Id
   @GeneratedValue(generator = "UUID")
   @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")

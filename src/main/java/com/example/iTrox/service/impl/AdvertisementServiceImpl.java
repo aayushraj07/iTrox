@@ -1,5 +1,6 @@
 package com.example.iTrox.service.impl;
 
+import com.example.iTrox.dto.AdvertismentRequestDto;
 import com.example.iTrox.dto.AdvertismentResponseDto;
 import com.example.iTrox.entity.Advertisement;
 import com.example.iTrox.repository.AdvertismentRepository;
@@ -26,5 +27,15 @@ public class AdvertisementServiceImpl implements AdvertisementService {
       advertismentResponseDtos.add(advertismentResponseDto);
     }
     return advertismentResponseDtos;
+  }
+
+  @Override
+  public AdvertismentResponseDto create(AdvertismentRequestDto advertismentRequestDto) {
+    Advertisement advertisement = new Advertisement();
+    advertisement.setType(advertismentRequestDto.getType());
+    advertisement.setDescription(advertismentRequestDto.getDescription());
+    advertisement.setTitle(advertismentRequestDto.getTitle());
+    repository.save(advertisement);
+    return null;
   }
 }

@@ -1,12 +1,11 @@
 package com.example.iTrox.controller;
 
+import com.example.iTrox.dto.AdvertismentRequestDto;
 import com.example.iTrox.dto.AdvertismentResponseDto;
 import com.example.iTrox.service.AdvertisementService;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/ads")
@@ -19,4 +18,7 @@ public class AdvertisementController {
   public List<AdvertismentResponseDto> getAll() {
     return advertisementService.getAll();
   }
+
+  @PostMapping
+  public AdvertismentResponseDto create(@RequestBody AdvertismentRequestDto advertismentRequestDto) { return advertisementService.create(advertismentRequestDto);}
 }
