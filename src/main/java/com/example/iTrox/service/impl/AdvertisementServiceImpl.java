@@ -3,28 +3,31 @@ package com.example.iTrox.service.impl;
 import com.example.iTrox.dto.AdvertismentRequestDto;
 import com.example.iTrox.dto.AdvertismentResponseDto;
 import com.example.iTrox.entity.Advertisement;
-import com.example.iTrox.repository.AdvertismentRepository;
+import com.example.iTrox.repository.AdvertisementRepository;
 import com.example.iTrox.service.AdvertisementService;
 import java.util.ArrayList;
 import java.util.List;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
+@RequiredArgsConstructor
 public class AdvertisementServiceImpl implements AdvertisementService {
 
-  private AdvertismentRepository repository;
+  private final AdvertisementRepository repository;
 
   @Override
   public List<AdvertismentResponseDto> getAll() {
 
     List<AdvertismentResponseDto> advertismentResponseDtos = new ArrayList<>();
-    List<Advertisement> advertisements1 = new ArrayList<>();
-    advertisements1 = repository.findAll();
-    for (Advertisement advertisement : advertisements1) {
-      AdvertismentResponseDto advertismentResponseDto = new AdvertismentResponseDto();
-      advertismentResponseDto.setTitle(advertisement.getTitle());
-      advertismentResponseDto.setDescription(advertisement.getDescription());
-      advertismentResponseDtos.add(advertismentResponseDto);
+    List<Advertisement> advertisements = repository.findAll();
+    if (advertisements != null) {
+      for (Advertisement advertisement : advertisements) {
+        AdvertismentResponseDto advertismentResponseDto = new AdvertismentResponseDto();
+        advertismentResponseDto.setTitle(advertisement.getTitle());
+        advertismentResponseDto.setDescription(advertisement.getDescription());
+        advertismentResponseDtos.add(advertismentResponseDto);
+      }
     }
     return advertismentResponseDtos;
   }

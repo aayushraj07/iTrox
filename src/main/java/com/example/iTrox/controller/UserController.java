@@ -24,12 +24,12 @@ public class UserController {
   private final UserService service;
 
   @GetMapping
-  public List<UserResponseDto> getAllUSers() {
+  public List<UserResponseDto> getAllUsers() {
     return service.getAll();
   }
 
   @ResponseStatus(code = HttpStatus.CREATED)
-  @ApiOperation(value = "Create a Assessment Practical Checklist")
+  @ApiOperation(value = "Create a User")
   @ApiResponses(
       value = {
         @ApiResponse(code = 201, message = Constants.SUCCESS),
