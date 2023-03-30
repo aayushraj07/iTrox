@@ -25,7 +25,7 @@ public class ActivityMapping extends Auditable {
   private Advertisement advertisement;
 
   @OneToOne(fetch = FetchType.LAZY)
-  private User user;
+  private Users users;
 
   @OneToOne(fetch = FetchType.LAZY)
   private Organisation organisation;

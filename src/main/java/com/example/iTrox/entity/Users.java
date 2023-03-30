@@ -9,10 +9,9 @@ import org.hibernate.annotations.GenericGenerator;
 
 @Getter
 @Setter
-@NoArgsConstructor
 @Entity
 @Table(name = "users")
-public class User extends Auditable {
+public class Users extends Auditable {
 
   @Id
   @GeneratedValue(generator = "UUID")

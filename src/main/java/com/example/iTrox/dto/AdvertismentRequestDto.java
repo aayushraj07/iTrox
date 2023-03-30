@@ -15,4 +15,6 @@ public class AdvertismentRequestDto {
   private String description;
 
   private Type type;
+
+  private String userId;
 }

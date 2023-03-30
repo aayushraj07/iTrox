@@ -30,7 +30,7 @@ public class Organisation extends Auditable {
   @Column(name = "email")
   private String email;
 
-  @Column(name = "type", nullable = false)
+  @Column(name = "type")
   private Type type;
 
   @OneToOne private ActivityMapping activityMapping;

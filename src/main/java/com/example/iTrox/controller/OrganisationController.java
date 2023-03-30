@@ -1,32 +1,31 @@
 package com.example.iTrox.controller;
 
 import com.example.commons.utils.Constants;
-import com.example.iTrox.dto.UserRequestDto;
-import com.example.iTrox.dto.UserResponseDto;
-import com.example.iTrox.service.UserService;
+import com.example.iTrox.dto.OrganisationRequestDto;
+import com.example.iTrox.dto.OrganisationResponseDto;
+import com.example.iTrox.service.OrganisationService;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import java.util.List;
-import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/organisation")
 @RequiredArgsConstructor
-public class UserController {
+public class OrganisationController {
 
-  private final UserService service;
+  private final OrganisationService service;
 
   @GetMapping
-  public List<UserResponseDto> getAllUsers() {
+  public List<OrganisationResponseDto> getAllOrganisation() {
     return service.getAll();
   }
 
   @ResponseStatus(code = HttpStatus.CREATED)
-  @ApiOperation(value = "Create a Users")
+  @ApiOperation(value = "Create a Organisation")
   @ApiResponses(
       value = {
         @ApiResponse(code = 201, message = Constants.SUCCESS),
@@ -36,12 +35,8 @@ public class UserController {
         @ApiResponse(code = 500, message = Constants.INTERNAL_SERVER_ERROR)
       })
   @PostMapping
-  public UserResponseDto create(@RequestBody UserRequestDto userRequestDto) {
-    return service.create(userRequestDto);
-  }
-
-  @GetMapping(value = "/{id}")
-  public UserResponseDto getById(@PathVariable UUID id) {
-    return service.getById(id);
+  public OrganisationResponseDto create(
+      @RequestBody OrganisationRequestDto organisationRequestDto) {
+    return service.create(organisationRequestDto);
   }
 }

@@ -1,14 +1,12 @@
 package com.example.iTrox.service.impl;
 
-import com.example.commons.exceptions.NotFoundException;
-import com.example.iTrox.dto.UserRequestDto;
-import com.example.iTrox.dto.UserResponseDto;
-import com.example.iTrox.entity.Users;
-import com.example.iTrox.repository.UserRepository;
-import com.example.iTrox.service.UserService;
+import com.example.iTrox.dto.OrganisationRequestDto;
+import com.example.iTrox.dto.OrganisationResponseDto;
+import com.example.iTrox.entity.Organisation;
+import com.example.iTrox.repository.OrganisationRepository;
+import com.example.iTrox.service.OrganisationService;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import lombok.RequiredArgsConstructor;
@@ -17,31 +15,26 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class UserServiceImpl implements UserService {
+public class OrganisationServiceImpl implements OrganisationService {
 
-  private final UserRepository repository;
+  private final OrganisationRepository repository;
 
   private final ModelMapper mapper;
 
   @Override
-  public List<UserResponseDto> getAll() {
-    List<UserResponseDto> userResponseDtos = new ArrayList<>();
-    List<Users> users = repository.findAll();
-    if (users != null) {
-      for (Users user : users) {
-        UserResponseDto userResponseDto = new UserResponseDto();
-        userResponseDto.setId(user.getId());
-        userResponseDto.setName(user.getName());
-        userResponseDto.setGender(user.getGender());
-        userResponseDtos.add(userResponseDto);
-      }
+  public List<OrganisationResponseDto> getAll() {
+    List<OrganisationResponseDto> organisationResponseDtos = new ArrayList<>();
+    List<Organisation> organisations = repository.findAll();
+    for (Organisation organisation : organisations) {
+      OrganisationResponseDto organisationResponseDto = new OrganisationResponseDto();
+      mapper.map(organisation, organisationResponseDto);
+      organisationResponseDtos.add(organisationResponseDto);
     }
-
-    return userResponseDtos;
+    return organisationResponseDtos;
   }
 
   @Override
-  public UserResponseDto create(UserRequestDto userRequestDto) {
+  public OrganisationResponseDto create(OrganisationRequestDto organisationRequestDto) {
     String nextUserId = null;
     String lastUsersId = repository.findByLastUSerId();
 
@@ -50,13 +43,10 @@ public class UserServiceImpl implements UserService {
     } else {
       nextUserId = "usr01";
     }
-
-    Users users = new Users();
-    users.setUserId(nextUserId);
-    users.setName(userRequestDto.getName());
-    users.setAge(userRequestDto.getAge());
-    users.setGender(userRequestDto.getGender());
-    repository.save(users);
+    organisationRequestDto.setOrganisationId(nextUserId);
+    Organisation organisation = new Organisation();
+    mapper.map(organisationRequestDto, organisation);
+    repository.save(organisation);
     return null;
   }
 
@@ -83,16 +73,7 @@ public class UserServiceImpl implements UserService {
       String newStr = input.substring(0, matcher.start(1)) + number;
       return newStr;
     }
-
     // If the pattern was not found, return the original input string
     return input;
-  }
-
-  @Override
-  public UserResponseDto getById(UUID id) {
-    Users users = repository.findById(id).orElseThrow(() -> new NotFoundException("No id found"));
-
-    UserResponseDto userResponseDto = mapper.map(users, UserResponseDto.class);
-    return userResponseDto;
   }
 }

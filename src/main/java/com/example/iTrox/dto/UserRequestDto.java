@@ -14,4 +14,5 @@ public class UserRequestDto {
   private String name;
   private Long age;
   private Gender gender;
+  private String email;
 }

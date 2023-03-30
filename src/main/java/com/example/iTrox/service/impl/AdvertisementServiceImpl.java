@@ -18,7 +18,6 @@ public class AdvertisementServiceImpl implements AdvertisementService {
 
   @Override
   public List<AdvertismentResponseDto> getAll() {
-
     List<AdvertismentResponseDto> advertismentResponseDtos = new ArrayList<>();
     List<Advertisement> advertisements = repository.findAll();
     if (advertisements != null) {
