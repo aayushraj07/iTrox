@@ -1,16 +1,18 @@
 package com.example.iTrox.controller;
 
 import com.example.commons.utils.Constants;
-import com.example.iTrox.dto.AdvertismentRequestDto;
 import com.example.iTrox.dto.AdvertismentResponseDto;
+import com.example.iTrox.enums.Type;
 import com.example.iTrox.service.AdvertisementService;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
+import java.io.IOException;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 @RequestMapping("/advertisement")
@@ -36,7 +38,13 @@ public class AdvertisementController {
       })
   @PostMapping
   public AdvertismentResponseDto create(
-      @RequestBody AdvertismentRequestDto advertismentRequestDto) {
-    return advertisementService.create(advertismentRequestDto);
+      @RequestParam("title") String title,
+      @RequestParam("description") String description,
+      @RequestParam("type") Type type,
+      @RequestParam("userId") String userId,
+      @RequestParam("organisationId") String organisationId,
+      @RequestPart("image") MultipartFile file)
+      throws IOException {
+    return advertisementService.create(title, description, type, userId, organisationId, file);
   }
 }

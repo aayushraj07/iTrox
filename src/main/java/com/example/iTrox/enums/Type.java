@@ -2,7 +2,8 @@ package com.example.iTrox.enums;
 
 public enum Type {
   COMMERCIAL("COMMERCIAL"),
-  GOVERNMENT("GOVERNMENT");
+  GOVERNMENT("GOVERNMENT"),
+  PERSONAL("PERSONAL");
 
   private final String type;
 

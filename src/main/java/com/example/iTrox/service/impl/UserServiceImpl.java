@@ -91,7 +91,6 @@ public class UserServiceImpl implements UserService {
   @Override
   public UserResponseDto getById(UUID id) {
     Users users = repository.findById(id).orElseThrow(() -> new NotFoundException("No id found"));
-
     UserResponseDto userResponseDto = mapper.map(users, UserResponseDto.class);
     return userResponseDto;
   }

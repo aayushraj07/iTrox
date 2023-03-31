@@ -9,8 +9,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface UserRepository extends JpaRepository<Users, UUID> {
 
-  @Query(
-      value =
-          "SELECT u.userId\n" + "  FROM Users u\n" + "  ORDER BY createdAt DESC\n" + "  LIMIT 1\n")
+  @Query(value = "SELECT u.userId FROM Users u ORDER BY createdAt DESC LIMIT 1")
   String findByLastUSerId();
 }

@@ -1,6 +1,6 @@
 package com.example.iTrox.dto;
 
-import jakarta.persistence.Column;
+import com.example.iTrox.enums.Type;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -8,9 +8,17 @@ import lombok.Setter;
 @Setter
 public class AdvertismentResponseDto {
 
-  @Column(name = "title")
   private String title;
 
-  @Column(name = "description")
   private String description;
+
+  private byte[] ImageData;
+
+  private String email;
+
+  private Type type;
+
+  private String userId;
+
+  private String organisationId;
 }

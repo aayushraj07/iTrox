@@ -1,5 +1,6 @@
 package com.example.iTrox.service.impl;
 
+import com.example.commons.exceptions.NotFoundException;
 import com.example.iTrox.dto.OrganisationRequestDto;
 import com.example.iTrox.dto.OrganisationResponseDto;
 import com.example.iTrox.entity.Organisation;
@@ -7,6 +8,7 @@ import com.example.iTrox.repository.OrganisationRepository;
 import com.example.iTrox.service.OrganisationService;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import lombok.RequiredArgsConstructor;
@@ -48,6 +50,15 @@ public class OrganisationServiceImpl implements OrganisationService {
     mapper.map(organisationRequestDto, organisation);
     repository.save(organisation);
     return null;
+  }
+
+  @Override
+  public OrganisationResponseDto getById(UUID id) {
+    Organisation organisation =
+        repository.findById(id).orElseThrow(() -> new NotFoundException("No id Found"));
+    OrganisationResponseDto organisationResponseDto =
+        mapper.map(organisation, OrganisationResponseDto.class);
+    return organisationResponseDto;
   }
 
   public static String nextUser(String input) {

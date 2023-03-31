@@ -28,5 +28,18 @@ public class Advertisement extends Auditable {
   @Column(name = "type")
   private Type type;
 
+  @Column(name = "userId")
+  private String userId;
+
+  @Column(name = "organisationId")
+  private String organisationId;
+
+  @Column(name = "email")
+  private String email;
+
+  @Lob
+  @Column(name = "imagedata", length = 1000)
+  private byte[] imageData;
+
   @OneToOne private ActivityMapping activityMapping;
 }

@@ -8,6 +8,7 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import java.util.List;
+import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -38,5 +39,10 @@ public class OrganisationController {
   public OrganisationResponseDto create(
       @RequestBody OrganisationRequestDto organisationRequestDto) {
     return service.create(organisationRequestDto);
+  }
+
+  @GetMapping(value = "/{id}")
+  public OrganisationResponseDto getById(@PathVariable UUID id) {
+    return service.getById(id);
   }
 }
