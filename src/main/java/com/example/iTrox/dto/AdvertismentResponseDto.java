@@ -12,8 +12,6 @@ public class AdvertismentResponseDto {
 
   private String description;
 
-  private byte[] ImageData;
-
   private String email;
 
   private Type type;
@@ -21,4 +19,6 @@ public class AdvertismentResponseDto {
   private String userId;
 
   private String organisationId;
+
+  private String downloadUrl;
 }
