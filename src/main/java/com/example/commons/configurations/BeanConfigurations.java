@@ -14,14 +14,8 @@ public class BeanConfigurations implements WebMvcConfigurer {
   @Override
   public void addCorsMappings(CorsRegistry registry) {
     registry
-        .addMapping("/api/**")
-        .allowedOrigins(
-            "http://localhost",
-            "http://localhost:3000",
-            "http://localhost:8000",
-            "http://localhost:8089",
-            "http://localhost:5500",
-            "http://65.2.21.231:8084")
+        .addMapping("/*")
+        .allowedOrigins("http://localhost", "http://localhost:8080", "http://localhost:8000")
         .allowedMethods("GET", "POST", "DELETE", "HEAD", "PUT", "FETCH", "OPTIONS");
   }
 
