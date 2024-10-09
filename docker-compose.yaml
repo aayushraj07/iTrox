@@ -1,0 +1,34 @@
+services:
+  db:
+    ports:
+      - 5432:5432
+    container_name: itrox_postgresqlDB_container
+    image: postgres
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_PASSWORD= 7525
+      - POSTGRES_USER = postgres
+    volumes:
+      - /custom/mount:/var/lib/postgresql/data
+    restart: always
+
+  backend:
+    build:
+      dockerfile: dockerfile
+    container_name: itrox_springBE_container
+    ports:
+      - 8080:8080
+    environment:
+      db-url: jdbc:postgresql://db:5432/postgres
+      db-username: postgres
+      db-password: 7525
+    depends_on:
+      - db
+    restart: always
+
+#  frontend:
+#    build: ./frontend
+#    ports:
+#      - "3000:3000"
+#    depends_on:
+#      - backend
